@@ -26,6 +26,11 @@ class Calculator {
     button_equal: HTMLButtonElement;
     button_clear: HTMLButtonElement;
 
+    p_left: HTMLParagraphElement;
+    p_operation: HTMLParagraphElement;
+    p_right: HTMLParagraphElement;
+    p_equals: HTMLParagraphElement;
+
     constructor() {
         this.answer = 0;
         this.on_deck = '';
@@ -55,6 +60,11 @@ class Calculator {
         var operators: Array<HTMLButtonElement> = [this.button_add, this.button_sub,
         this.button_mul, this.button_div]
 
+        this.p_left = document.getElementById('left') as HTMLParagraphElement
+        this.p_operation = document.getElementById('operation') as HTMLParagraphElement
+        this.p_right = document.getElementById('right') as HTMLParagraphElement
+        this.p_equals = document.getElementById('equals') as HTMLParagraphElement
+
         // add event listeners
         num_pad.forEach(el => el.addEventListener('click', () => this.input(event)));
         operators.forEach(el => el.addEventListener('click', () => this.operator(event)));
@@ -67,36 +77,36 @@ class Calculator {
         this.on_deck += button.value;
 
         if (this.operation == 'nul') {
-            document.getElementById('left').innerHTML = this.on_deck;
+            this.p_left.innerHTML = this.on_deck;
         }
         else {
-            document.getElementById('right').innerHTML = this.on_deck;
+            this.p_right.innerHTML = this.on_deck;
         } 
     }
 
     operator(event: Event): void {
         var button: HTMLButtonElement = event.target as HTMLButtonElement;
         // reset the equation
-        document.getElementById('right').innerHTML = '';
-        document.getElementById('equals').innerHTML = '';
+        this.p_right.innerHTML = '';
+        this.p_equals.innerHTML = '';
         // Don't convert value into empty string
         if (this.on_deck !== ''){
             // Store on deck value into value
             // This is for the "left hand" number
             this.answer = parseFloat(this.on_deck);
-            document.getElementById('left').innerHTML = this.on_deck;
+            this.p_left.innerHTML = this.on_deck;
         }
         else{
             // Operating on previous calculated value, move it to the left
-            document.getElementById('left').innerHTML = this.answer.toString();
+            this.p_left.innerHTML = this.answer.toString();
         }
         this.on_deck = '';
         this.operation = button.value;
-        document.getElementById('operation').innerHTML = button.innerHTML;
+        this.p_operation.innerHTML = button.innerHTML;
     }
 
     math(event: Event): void {
-        var button: HTMLButtonElement = event.target as HTMLButtonElement;
+        //var button: HTMLButtonElement = event.target as HTMLButtonElement;
         switch(this.operation) {
             case 'add':
                 this.answer += parseFloat(this.on_deck);
@@ -116,7 +126,7 @@ class Calculator {
         // reset operation to none so you can't keep doing operations
         this.operation = 'nul';
         this.on_deck = '';
-        document.getElementById('equals').innerHTML = '='+this.answer.toString();
+        this.p_equals.innerHTML = '='+this.answer.toString();
         console.log('Value: '+this.answer.toString());
     }
 }
