@@ -9,6 +9,7 @@ class Calculator {
     // 3 character string for which operation to perform
     operation: string;
 
+    // Button elements of the calculator
     button_1: HTMLButtonElement;
     button_2: HTMLButtonElement;
     button_3: HTMLButtonElement;
@@ -26,6 +27,7 @@ class Calculator {
     button_equal: HTMLButtonElement;
     button_clear: HTMLButtonElement;
 
+    // Paragraph elements that display the "screen"
     p_left: HTMLParagraphElement;
     p_operation: HTMLParagraphElement;
     p_right: HTMLParagraphElement;
@@ -70,6 +72,7 @@ class Calculator {
         operators.forEach(el => el.addEventListener('click', () => this.operator(event)));
         // using an arrow function because it preserves "this" in whatever you call
         this.button_equal.addEventListener('click', () => this.math(event));
+        this.button_clear.addEventListener('click', () => this.clear(event));
     }
 
     input(event: Event): void {
@@ -128,6 +131,21 @@ class Calculator {
         this.on_deck = '';
         this.p_equals.innerHTML = '='+this.answer.toString();
         console.log('Value: '+this.answer.toString());
+    }
+
+    /**
+     * Clear everything out of the calculator
+     * @param event event that triggered the method
+     */
+    clear(event: Event): void {
+        this.answer = 0;
+        this.on_deck = '';
+        this.operation = 'nul';
+
+        this.p_left.innerHTML = '';
+        this.p_operation.innerHTML = '';
+        this.p_right.innerHTML = '';
+        this.p_equals.innerHTML = '';
     }
 }
 
