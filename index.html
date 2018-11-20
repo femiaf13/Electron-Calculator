@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Frank's Calculator!</title>
+  </head>
+  <body>
+    <h1>Frank's Calculator!</h1>
+    <!-- All of the Node.js APIs are available in this renderer process. -->
+
+    <p id="left" style="display:inline"></p>
+    <p id="operation" style="display:inline"></p>
+    <p id="right" style="display:inline"></p>
+    <p id="equals" style="display:inline"></p>
+
+    <br>
+    <button id="button_1" type="button" value="1" class="btn btn-default btn-xs">1</button>
+    <button id="button_2" type="button" value="2"class="btn btn-default btn-xs">2</button>
+    <button id="button_3" type="button" value="3" class="btn btn-default btn-xs">3</button>
+    <br>
+    <button id="button_4" type="button" value="4"class="btn btn-default btn-xs">4</button>
+    <button id="button_5" type="button" value="5" class="btn btn-default btn-xs">5</button>
+    <button id="button_6" type="button" value="6"class="btn btn-default btn-xs">6</button>
+    <br>
+    <button id="button_7" type="button" value="7" class="btn btn-default btn-xs">7</button>
+    <button id="button_8" type="button" value="8"class="btn btn-default btn-xs">8</button>
+    <button id="button_9" type="button" value="9" class="btn btn-default btn-xs">9</button>
+    <br>
+    <button id="button_0" type="button" value="0"class="btn btn-default btn-xs">0</button>
+    <br>
+    <button id="button_add" type="button" value="add" class="btn btn-default btn-xs">+</button>
+    <button id="button_sub" type="button" value="sub" class="btn btn-default btn-xs">-</button>
+    <button id="button_mul" type="button" value="mul" class="btn btn-default btn-xs">*</button>
+    <button id="button_div" type="button" value="div" class="btn btn-default btn-xs">/</button>
+    <button id="button_equal" type="button" value="=" class="btn btn-default btn-xs">=</button>
+
+  </body>
+
+  <script>
+    // You can also require other files to run in this process
+    require('./dist/calc.js')
+  </script>
+</html>

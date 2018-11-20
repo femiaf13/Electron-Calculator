@@ -1,0 +1,19 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "Simple calculator to learn electron",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "start": "npm run build && electron ./dist/main.js"
+  },
+  "author": "Frank Femia",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^3.0.10",
+    "tslint": "^5.10.0",
+    "typescript": "^2.9.2"
+  }
+}
